@@ -1,0 +1,106 @@
+.container {
+  animation-duration: 0.25s;
+  animation-name: modal_container_show;
+  backdrop-filter: saturate(180%) blur(7px);
+  background-color: rgba(0, 0, 0, 0.75);
+  bottom: 0;
+  display: flex;
+  left: 0;
+  overflow: scroll;
+  padding-bottom: 3rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+
+@keyframes modal_container_show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  animation-duration: 0.25s;
+  animation-name: modal_show;
+  background-color: var(--color-card);
+  border: 2px solid var(--color-card-n50);
+  border-radius: 4px;
+  margin: auto;
+  margin-top: 8rem;
+  padding: 1rem;
+  width: 42rem;
+}
+
+@keyframes modal_show {
+  from {
+    opacity: 0;
+    margin-top: 4rem;
+  }
+
+  to {
+    opacity: 1;
+    margin-top: 8rem;
+  }
+}
+
+.header {
+  align-items: center;
+  display: flex;
+}
+
+.title {
+  color: var(--color-text-p25);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.close_button {
+  background: transparent;
+  border: 0;
+  color: var(--color-text-p25);
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-left: auto;
+  transition: color 0.25s;
+}
+
+.close_button:hover {
+  color: var(--color-text-p50);
+}
+
+.content {
+  margin: 1.5rem 0 1rem 0;
+}
+
+@media (max-width: 1000px) {
+  .modal {
+    height: max-content;
+    margin: auto;
+    padding: 1rem;
+    width: 85%;
+  }
+
+  @keyframes modal_show {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.footer {
+  border-radius: 0 0 4px 4px;
+  border-top: 1px solid var(--color-card-n12);
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem -1rem -1rem -1rem;
+  padding: 1rem;
+}

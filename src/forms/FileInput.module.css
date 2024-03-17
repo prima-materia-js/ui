@@ -1,0 +1,20 @@
+.container {
+  align-items: center;
+  background: var(--color-form-input-p12);
+  border: 1px dashed var(--color-form-input-n25);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  padding: 1rem;
+  transition: all 0.25s;
+}
+
+.container:hover {
+  background: var(--color-form-input);
+  border-color: var(--color-form-input-n37);
+}
+
+.file_input {
+  display: none;
+}

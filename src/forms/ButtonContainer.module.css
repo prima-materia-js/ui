@@ -1,0 +1,15 @@
+.button_container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .button_container {
+    flex-direction: column;
+  }
+
+  .button_container button {
+    margin-bottom: 0.5rem;
+  }
+}

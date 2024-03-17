@@ -1,0 +1,79 @@
+.card {
+  background-color: var(--color-card);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 0px var(--color-box-shadow-light);
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0 1.5rem 0;
+  padding: 1rem;
+  transition: border 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.highlighted {
+  border: 1px solid var(--color-primary-accent-p12);
+  box-shadow: 0px 0px 4px 0px var(--color-primary-accent);
+}
+
+.card.hover_effect:hover {
+  box-shadow: 0px 0px 4px 0px var(--color-primary-accent-p12);
+}
+
+.header_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.title {
+  color: var(--color-text-p25);
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.header_right_content {
+  margin-left: auto;
+}
+
+.collapsible_card .title {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0;
+  transition: margin-bottom 0.15s ease-in-out;
+}
+
+.collapsible_card .icon_container {
+  margin-left: auto;
+}
+
+.collapsible_card .icon {
+  transition: transform 0.15s ease-in-out;
+}
+
+.collapsible_card.expanded .icon {
+  transform: rotate(90deg);
+}
+
+.collapsible_card .content {
+  margin-top: 1rem;
+}
+
+.footer {
+  border-radius: 0 0 4px 4px;
+  border-top: 1px solid var(--color-card-n12);
+  display: flex;
+  justify-content: flex-end;
+  margin: auto -1rem -1rem -1rem;
+  padding: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .footer {
+    margin-top: 2rem;
+  }
+}

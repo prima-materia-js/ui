@@ -1,0 +1,44 @@
+.container {
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  gap: 1rem;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  background-color: var(--color-sidebar);
+  border-right: 1px solid var(--color-background-n25);
+  grid-column: 1;
+  grid-row: 1;
+  overflow-y: scroll;
+  padding: 1rem 0.5rem;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 0;
+}
+
+.content {
+  grid-column: 2;
+  grid-row: 1;
+  overflow-y: scroll;
+  padding: 1rem 1rem 3rem 0.15rem;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    display: block;
+    overflow: scroll;
+  }
+
+  .content,
+  .sidebar {
+    padding: 0.5rem;
+  }
+
+  .sidebar {
+    border-bottom: 1px solid var(--color-gray-light-n25);
+    border-right: 0;
+  }
+}

@@ -1,0 +1,88 @@
+.button {
+  background-color: var(--color-form-input-n25);
+  border: 1px solid var(--color-form-input-n25);
+  border-radius: 4px;
+  box-shadow: 0px 0px 8px 0px var(--color-box-shadow-light);
+  color: var(--color-form-input-n75);
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  padding: 0.45rem 1.5rem;
+  transition: background-color 0.15s;
+}
+
+.button.small {
+  padding: 0.35rem 1.25rem;
+  font-size: 0.75rem;
+}
+
+.button:last-child {
+  margin-right: initial;
+}
+
+.button.subtle {
+  background-color: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+.button:hover {
+  background-color: var(--color-form-input-n37);
+}
+
+button.subtle:hover {
+  background-color: var(--color-form-input-n37);
+}
+
+.primary {
+  border-color: var(--color-primary-accent);
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button.disabled:hover {
+  border-color: initial;
+}
+
+.button.danger {
+  background-color: var(--color-highlight-red);
+  border: 1px solid var(--color-highlight-red);
+  color: var(--color-form-input-p25);
+}
+
+.button.danger:hover,
+.button.danger.subtle:hover {
+  background-color: var(--color-highlight-red-n25);
+  border: 1px solid var(--color-highlight-red-n25);
+  color: var(--color-form-input-p25);
+}
+
+.button.danger.subtle {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: inherit;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.button.highlight {
+  background-color: var(--color-primary-accent-p12);
+  border: 1px solid var(--color-primary-accent-p12);
+  color: var(--color-form-input-p25);
+}
+
+.button.highlight:hover {
+  background-color: var(--color-primary-accent);
+  border: 1px solid var(--color-primary-accent);
+}
+
+@media (max-width: 1000px) {
+  .button {
+    display: block;
+    width: 100%;
+  }
+}

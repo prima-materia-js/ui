@@ -1,0 +1,37 @@
+.timeline {
+  border-left: 5px solid var(--color-gray-light-n25);
+  margin-left: 2rem;
+  padding-top: 1rem;
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.marker {
+  align-items: flex-end;
+  background: var(--color-gray-light);
+  color: var(--color-gray-light-n62);
+  display: flex;
+  height: 1.5rem;
+  margin-left: -1.15rem;
+  padding: 0.5rem;
+  padding-top: 0;
+  width: 1rem;
+}
+
+.entry:last-child .marker {
+  align-items: flex-start;
+  height: auto;
+  padding-top: 0.5rem;
+}
+
+.content {
+  flex: 1;
+}

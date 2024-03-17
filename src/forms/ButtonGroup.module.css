@@ -1,0 +1,49 @@
+.button_group button {
+  background-color: var(--color-form-input-n12);
+  border: 1px solid var(--color-form-input-n25);
+  border-left: 0;
+  color: var(--color-form-input-n75);
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  outline: 0;
+  padding: 0.35rem 1.25rem;
+}
+
+.button_group button:first-child {
+  border-radius: 4px 0 0 4px;
+  border-left: 1px solid var(--color-form-input-n25);
+}
+
+.button_group button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.button_group button.selected {
+  background-color: var(--color-primary-accent-p12);
+  color: var(--color-form-input-p25);
+}
+
+@media (max-width: 1000px) {
+  .button_group {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .button_group button {
+    border: 1px solid var(--color-form-input-n25);
+    border-bottom: 0;
+    border-radius: 0;
+  }
+
+  .button_group button:first-child {
+    border-radius: 4px 4px 0 0;
+  }
+
+  .button_group button:last-child {
+    border-bottom: 1px solid var(--color-form-input-n25);
+    border-radius: 0 0 4px 4px;
+  }
+}

@@ -1,0 +1,39 @@
+.colour_normal {
+  --colour-border: var(--color-gray-light-n37);
+  --colour-background: var(--color-gray-light-n12);
+}
+
+.colour_highlight {
+  --colour-border: var(--color-highlight-p25);
+  --colour-background: var(--color-highlight-p62);
+}
+
+.colour_positive {
+  --colour-border: var(--color-highlight-green-p37);
+  --colour-background: var(--color-highlight-green-p75);
+}
+
+.colour_negative {
+  --colour-border: var(--color-highlight-red-p50);
+  --colour-background: var(--color-highlight-red-p75);
+}
+
+.colour_accent {
+  --colour-border: var(--color-primary-accent);
+  --colour-background: var(--color-primary-accent-p50);
+}
+
+.tag {
+  background: var(--colour-background);
+  border: 1px solid var(--colour-border);
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.15rem 0.5rem;
+}
+
+.tag:last-child {
+  margin-right: 0;
+}

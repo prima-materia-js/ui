@@ -1,0 +1,33 @@
+h1.heading {
+  color: var(--color-text-p25);
+  font-size: 2.488rem;
+  font-weight: 600;
+}
+
+h2.heading {
+  color: var(--color-text-p25);
+  font-size: 2.074rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+h3.heading {
+  color: var(--color-text-p37);
+  font-size: 1.728rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: var(--color-text-p50);
+  font-size: 65%;
+  font-weight: 400;
+}
+
+.page_title {
+  margin-bottom: 2rem;
+}
+
+.page_title:has(+ h2) {
+  margin-bottom: 0;
+}

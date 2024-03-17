@@ -1,0 +1,46 @@
+.container {
+  display: inline-block;
+  margin-right: 0.5rem;
+  position: relative;
+}
+
+.container button {
+  margin-right: 0;
+}
+
+.menu {
+  background-color: var(--color-gray-light-p87);
+  border: 1px solid var(--color-gray-light-n25);
+  border-radius: 4px;
+  box-shadow: 0 13px 15px -7px var(--color-gray-light-n50);
+  list-style-type: none;
+  max-width: 35rem;
+  min-width: 10rem;
+  position: absolute;
+  margin-top: 0.25rem;
+  z-index: 999;
+}
+
+.menu.left {
+  right: 0;
+}
+
+.menu.right {
+  left: 0;
+}
+
+.menu li {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.menu li:hover {
+  background: var(--color-gray-light-n12);
+}
+
+.icon {
+  display: inline-block;
+  margin: 0 0.5rem 0 0.25rem;
+  vertical-align: middle;
+  width: 1rem;
+}

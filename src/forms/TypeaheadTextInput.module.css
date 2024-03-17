@@ -1,0 +1,62 @@
+.container {
+  flex: 1;
+  position: relative;
+}
+
+.input_container {
+  background-color: var(--color-form-input-p75);
+  border: 1px solid var(--color-form-input-n25);
+  border-radius: 4px;
+  display: flex;
+  flex: 1;
+  transition: border-radius 0.25s;
+}
+
+.input_container.options_visible {
+  border-radius: 4px 4px 0 0;
+}
+
+.text_input {
+  background: transparent;
+  border: 0;
+  color: var(--color-form-input-n75);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  outline: 0;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.disabled {
+  background-color: var(--color-form-input-n12);
+  cursor: not-allowed;
+}
+
+.prefix {
+  background: var(--color-form-input-p12);
+  border-radius: 4px 0 0 4px;
+  border-right: 1px solid var(--color-form-input-n25);
+  color: var(--color-form-input-n37);
+  padding: 0.5rem;
+}
+
+.options {
+  background-color: var(--color-form-input-p75);
+  border: 1px solid var(--color-form-input-n25);
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 13px 15px 1px var(--color-form-input-n50);
+  list-style-type: none;
+  position: absolute;
+  width: 100%;
+  width: -webkit-fill-available;
+  z-index: 999;
+}
+
+.options li {
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.options li:hover {
+  background: var(--color-form-input-p12);
+}

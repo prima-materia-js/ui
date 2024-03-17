@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.h_center {
+  justify-content: center;
+}
+
+.v_center {
+  align-items: center;
+}

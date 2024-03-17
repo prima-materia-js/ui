@@ -7,6 +7,11 @@ on:
   release:
     types: [created]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,6 +22,7 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm run build
+      - run: npm run build-storybook
 
   publish-npm:
     needs: build
@@ -28,7 +34,15 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm run build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+  deploy-storybook:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - id: build-publish
+      uses: bitovi/github-actions-storybook-to-github-pages@v1.0.2
+      with:
+        path: storybook-static

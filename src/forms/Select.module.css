@@ -64,6 +64,10 @@
   background: var(--color-form-input-n12);
 }
 
+.options li:hover:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
 .section_header {
   color: var(--color-form-input-n50);
   font-size: 0.85rem;

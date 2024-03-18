@@ -2,6 +2,8 @@
 
 Prima Materia UI is a basic component library for React. Use the links on the left to browse the different categories of components.
 
+**To explore the components in this library, see the Storybook here:** [https://prima-materia-js.github.io/ui/](https://prima-materia-js.github.io/ui/).
+
 # Features
 
 Prima Materia UI is designed to quickly create a usable UI for a web application built on React. It provides components for page layout, navigation, forms and user input, and styling.

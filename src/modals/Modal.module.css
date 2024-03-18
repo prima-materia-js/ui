@@ -2,7 +2,7 @@
   animation-duration: 0.25s;
   animation-name: modal_container_show;
   backdrop-filter: saturate(180%) blur(7px);
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.66);
   bottom: 0;
   display: flex;
   left: 0;

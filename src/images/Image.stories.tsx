@@ -32,7 +32,7 @@ export const HiddenOnError: Story = {
   render: (args) => (
     <>
       (This will not render anything when <code>hideIfImageDoesNotLoad</code> is
-      set to false.)
+      set to true.)
       <Image {...args} />
     </>
   ),

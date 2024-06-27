@@ -35,3 +35,9 @@
 .clickable {
   cursor: pointer;
 }
+
+.disabled {
+  background-color: var(--color-form-input-n12);
+  color: var(--color-form-input-n37);
+  cursor: not-allowed;
+}

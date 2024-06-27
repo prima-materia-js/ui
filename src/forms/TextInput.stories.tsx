@@ -56,3 +56,26 @@ export const PasswordInput: Story = {
     type: 'password',
   },
 };
+
+export const WithValidation: Story = {
+  render: (args) => {
+    const [value, setValue] = useState('');
+
+    return <TextInput {...args} value={value} onChange={setValue} />;
+  },
+  args: {
+    label: 'IP Address',
+    helpText: 'Type an IPv4 address',
+    onValidate: (value) => {
+      if (
+        /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
+          value
+        )
+      ) {
+        return null;
+      } else {
+        return 'Not a valid IPv4 address.';
+      }
+    },
+  },
+};

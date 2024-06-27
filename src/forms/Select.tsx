@@ -18,6 +18,9 @@ const Select: React.FC<{
   /** Additional context about this form field. */
   helpText?: string;
 
+  /** Whether the field blocks user input. */
+  disabled?: boolean;
+
   /** The list of options to show in the drop-down list. */
   options: Array<{
     /** The readable label of this option. */
@@ -32,7 +35,7 @@ const Select: React.FC<{
 
   /** The callback function to be invoked when the selected option changes. */
   onChange: (value: string) => void;
-}> = ({ label, helpText, options, value, onChange }) => {
+}> = ({ label, helpText, options, value, onChange, disabled = false }) => {
   const [shouldShowOptions, setShouldShowOptions] = useState(false);
   const onOptionSelect = useCallback(
     (selectedValue: string) => {
@@ -63,8 +66,11 @@ const Select: React.FC<{
           className={classnames({
             [styles.selector]: true,
             [styles.is_expanded]: shouldShowOptions,
+            [styles.disabled]: disabled,
           })}
           onClick={(e) => {
+            if (disabled) return;
+
             setShouldShowOptions(!shouldShowOptions);
             e.stopPropagation();
           }}
@@ -82,7 +88,7 @@ const Select: React.FC<{
           </div>
         </div>
 
-        {shouldShowOptions && (
+        {shouldShowOptions && !disabled && (
           <ul className={styles.options}>
             {options.map((option) => (
               <li

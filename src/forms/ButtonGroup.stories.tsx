@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import ButtonGroup from "./ButtonGroup";
-import { useState } from "react";
+import type { Meta, StoryObj } from '@storybook/react';
+import ButtonGroup from './ButtonGroup';
+import { useState } from 'react';
 
 const meta: Meta<typeof ButtonGroup> = {
   component: ButtonGroup,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -16,27 +16,30 @@ export const Example: Story = {
     const [value, setValue] = useState<string | null>(null);
     return (
       <ButtonGroup
+        {...args}
         items={[
           {
-            label: "Small",
-            value: "s",
+            label: 'Small',
+            value: 's',
           },
           {
-            label: "Medium",
-            value: "m",
+            label: 'Medium',
+            value: 'm',
           },
           {
-            label: "Large",
-            value: "l",
+            label: 'Large',
+            value: 'l',
           },
         ]}
         value={value}
         onChange={setValue}
-        label="Size"
       />
     );
   },
-  args: {},
+  args: {
+    disabled: false,
+    label: 'Size',
+  },
 };
 
 export const ExampleWithHelpText: Story = {
@@ -44,26 +47,29 @@ export const ExampleWithHelpText: Story = {
     const [value, setValue] = useState<string | null>(null);
     return (
       <ButtonGroup
+        {...args}
         items={[
           {
-            label: "Small",
-            value: "s",
+            label: 'Small',
+            value: 's',
           },
           {
-            label: "Medium",
-            value: "m",
+            label: 'Medium',
+            value: 'm',
           },
           {
-            label: "Large",
-            value: "l",
+            label: 'Large',
+            value: 'l',
           },
         ]}
         value={value}
         onChange={setValue}
-        label="Size"
-        helpText="Choose your t-shirt size"
       />
     );
   },
-  args: {},
+  args: {
+    disabled: false,
+    label: 'Size',
+    helpText: 'Choose your t-shirt size',
+  },
 };

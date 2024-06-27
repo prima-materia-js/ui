@@ -25,6 +25,11 @@
   color: var(--color-form-input-p25);
 }
 
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
 @media (max-width: 1000px) {
   .button_group {
     display: flex;

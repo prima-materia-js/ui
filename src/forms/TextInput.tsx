@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { useState } from 'react';
 import classnames from 'classnames';
 
 import FormField from './FormField';
 
 import styles from './TextInput.module.css';
+import useValidation from './hooks/useValidation';
 
 const { useEffect } = React;
 
@@ -46,9 +48,20 @@ const TextInput: React.FC<{
 
   /** The current value of the input. */
   value: string;
+
+  /** A function to validate the user-provided input. Return null or an empty string if the value is valid; otherwise
+   * return a message explaining why the value is invalid.  */
+  onValidate?: (value: string) => null | string;
 }> = (props) => {
   let textInput: HTMLInputElement | null = null;
-  const { disabled = false, placeholder = '', type = 'text' } = props;
+  const {
+    disabled = false,
+    placeholder = '',
+    type = 'text',
+    onValidate,
+    value,
+  } = props;
+  const { isValid, validationMessage } = useValidation(value, onValidate);
 
   useEffect(() => {
     if (!!props.focusOnLoad && !!textInput && !props.value) {
@@ -57,8 +70,19 @@ const TextInput: React.FC<{
   }, [textInput, props.value, props.focusOnLoad]);
 
   return (
-    <FormField label={props.label} helpText={props.helpText}>
-      <div className={styles.container}>
+    <FormField
+      label={props.label}
+      helpText={props.helpText}
+      valid={isValid}
+      validationMessage={validationMessage}
+    >
+      <div
+        className={classnames({
+          [styles.container]: true,
+          [styles.valid]: isValid === true,
+          [styles.invalid]: isValid === false,
+        })}
+      >
         {props.prefix && <div className={styles.prefix}>{props.prefix}</div>}
         <input
           autoComplete={props.autoComplete}

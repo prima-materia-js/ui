@@ -77,3 +77,18 @@
 .multi_select_options {
   padding: 0.5rem;
 }
+
+.disabled,
+.disabled:hover {
+  background-color: var(--color-form-input-n12);
+  color: var(--color-form-input-n37);
+  cursor: not-allowed;
+}
+
+.valid {
+  border-color: var(--color-highlight-green);
+}
+
+.invalid {
+  border-color: var(--color-highlight-red-n25);
+}

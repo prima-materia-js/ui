@@ -18,6 +18,7 @@ export const Example: Story = {
     return <TextArea {...args} value={value} onChange={setValue} />;
   },
   args: {
+    disabled: false,
     allowResize: true,
     autoGrow: false,
     helpText: 'Tell us about yourself',
@@ -52,5 +53,24 @@ export const WithLineNumbers: Story = {
   args: {
     label: 'Configuration',
     showLineNumbers: true,
+  },
+};
+
+export const WithValidation: Story = {
+  render: (args) => {
+    const [value, setValue] = useState('');
+
+    return <TextArea {...args} value={value} onChange={setValue} />;
+  },
+  args: {
+    label: 'About yourself',
+    helpText: 'Type at least 10 characters',
+    onValidate: (value) => {
+      if (value.length >= 10) {
+        return null;
+      }
+
+      return `${10 - value.length} more characters needed`;
+    },
   },
 };

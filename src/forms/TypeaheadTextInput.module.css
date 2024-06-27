@@ -29,6 +29,7 @@
 
 .disabled {
   background-color: var(--color-form-input-n12);
+  color: var(--color-form-input-n37);
   cursor: not-allowed;
 }
 
@@ -63,4 +64,12 @@
 
 .options li:hover:last-child {
   border-radius: 0 0 4px 4px;
+}
+
+.valid {
+  border-color: var(--color-highlight-green);
+}
+
+.invalid {
+  border-color: var(--color-highlight-red-n25);
 }

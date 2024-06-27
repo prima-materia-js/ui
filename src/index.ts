@@ -31,6 +31,8 @@ import Select from './forms/Select';
 import TextInput from './forms/TextInput';
 import TextArea from './forms/TextArea';
 import TypeaheadTextInput from './forms/TypeaheadTextInput';
+import { FormValidationProvider } from './forms/FormValidationProvider';
+import FormValidationSummary from './forms/FormValidationSummary';
 
 // Images
 import Image from './images/Image';
@@ -90,6 +92,8 @@ export {
   TextInput,
   TextArea,
   TypeaheadTextInput,
+  FormValidationProvider,
+  FormValidationSummary,
   Image,
   Center,
   Flyout,

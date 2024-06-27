@@ -27,6 +27,7 @@ export const Example: Story = {
     return <Select {...args} value={value} onChange={setValue} />;
   },
   args: {
+    disabled: false,
     label: 'Region',
     helpText: 'Which geographical region are you in?',
     options: [

@@ -27,6 +27,7 @@ export const Example: Story = {
     return <MultiSelect {...args} selectedItems={value} onChange={setValue} />;
   },
   args: {
+    disabled: false,
     label: 'Platform',
     helpText: 'Which platforms will this app target?',
     options: [
@@ -46,5 +47,38 @@ export const Example: Story = {
         ],
       },
     ],
+  },
+};
+
+export const WithValidation: Story = {
+  render: (args) => {
+    const [value, setValue] = useState<string[]>([]);
+
+    return <MultiSelect {...args} selectedItems={value} onChange={setValue} />;
+  },
+  args: {
+    disabled: false,
+    label: 'Platform',
+    helpText: 'Which platforms will this app target? (Select at least 2)',
+    options: [
+      {
+        header: 'Mobile',
+        items: [
+          { label: 'Android', value: 'android' },
+          { label: 'iOS', value: 'ios' },
+        ],
+      },
+      {
+        header: 'Desktop',
+        items: [
+          { label: 'Linux', value: 'linux' },
+          { label: 'MacOS', value: 'macos' },
+          { label: 'Windows', value: 'windows' },
+        ],
+      },
+    ],
+    onValidate: (items) => {
+      return items.length >= 2 ? null : 'Select at least 2 platforms';
+    },
   },
 };

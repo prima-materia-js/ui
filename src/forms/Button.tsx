@@ -3,12 +3,16 @@ import classnames from 'classnames';
 import Spinner from '../spinners/Spinner';
 
 import styles from './Button.module.css';
+import { FormValidationContext } from './FormValidationProvider';
 
 export type ButtonColour = 'normal' | 'danger' | 'highlight';
 
 export type Props = {
   /** Whether this button is disabled and cannot be clicked. */
   disabled?: boolean;
+
+  /** Disables this button if any FormFields within this form context are invalid. Works only when nested within a <FormValidationProvider>. */
+  disableIfFormValidationFails?: boolean;
 
   /** The content of this button. */
   label: React.ReactNode;
@@ -60,19 +64,27 @@ const Button: React.FC<Props> = ({
   subtle = false,
   tooltipDirection = 'up',
   colour = 'normal',
+  disableIfFormValidationFails = false,
 }) => {
+  const validationContext = React.useContext(FormValidationContext);
+  const isDisabled =
+    disabled ||
+    (disableIfFormValidationFails &&
+      validationContext.isActive &&
+      !validationContext.allFieldsAreValid);
+
   return (
     <button
       className={classnames({
         [styles.button]: true,
         [styles.primary]: primary,
-        [styles.disabled]: disabled || showSpinner,
+        [styles.disabled]: isDisabled || showSpinner,
         [styles.subtle]: subtle,
         [styles.danger]: colour === 'danger',
         [styles.highlight]: colour === 'highlight',
         [styles.small]: size === 'small',
       })}
-      disabled={disabled}
+      disabled={isDisabled}
       onClick={onClick}
       aria-label={tooltip}
       data-balloon-pos={tooltipDirection}

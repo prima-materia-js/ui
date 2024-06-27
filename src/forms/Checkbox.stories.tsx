@@ -26,5 +26,6 @@ export const BasicCheckbox: Story = {
   },
   args: {
     label: 'Send me updates via email',
+    disabled: false,
   },
 };

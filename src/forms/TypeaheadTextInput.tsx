@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import FormField from './FormField';
 
 import styles from './TypeaheadTextInput.module.css';
+import useValidation from './hooks/useValidation';
 
 const TypeaheadTextInput: React.FC<{
   /** Whether the input is disabled and blocks any interaction. */
@@ -44,6 +45,10 @@ const TypeaheadTextInput: React.FC<{
 
   /** The current value of the input. */
   value: string;
+
+  /** A function to validate the user-provided input. Return null or an empty string if the value is valid; otherwise
+   * return a message explaining why the value is invalid.  */
+  onValidate?: (value: string) => null | string;
 }> = (props) => {
   let textInput: HTMLInputElement | null = null;
   const {
@@ -53,7 +58,10 @@ const TypeaheadTextInput: React.FC<{
     disabled = false,
     placeholder = '',
     typeaheadTriggerChars = 3,
+    onValidate,
   } = props;
+
+  const { isValid, validationMessage } = useValidation(value, onValidate);
 
   useEffect(() => {
     if (!!props.focusOnLoad && !!textInput && !props.value) {
@@ -74,8 +82,19 @@ const TypeaheadTextInput: React.FC<{
     filteredOptions.length > 0;
 
   return (
-    <FormField label={props.label} helpText={props.helpText}>
-      <div className={styles.container}>
+    <FormField
+      label={props.label}
+      helpText={props.helpText}
+      valid={isValid}
+      validationMessage={validationMessage}
+    >
+      <div
+        className={classnames({
+          [styles.container]: true,
+          [styles.valid]: isValid === true,
+          [styles.invalid]: isValid === false,
+        })}
+      >
         <div
           className={classnames({
             [styles.input_container]: true,

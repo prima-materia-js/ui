@@ -1,5 +1,5 @@
 .button {
-  background-color: var(--color-form-input-n25);
+  background-color: var(--color-form-input-n12);
   border: 1px solid var(--color-form-input-n25);
   border-radius: 4px;
   box-shadow: 0px 0px 8px 0px var(--color-box-shadow-light);
@@ -29,11 +29,11 @@
 }
 
 .button:hover {
-  background-color: var(--color-form-input-n37);
+  background-color: var(--color-form-input-n25);
 }
 
 button.subtle:hover {
-  background-color: var(--color-form-input-n37);
+  background-color: var(--color-form-input-n25);
 }
 
 .primary {
@@ -46,7 +46,8 @@ button.subtle:hover {
 }
 
 .button.disabled:hover {
-  border-color: initial;
+  background-color: var(--color-form-input-n12);
+  border: 1px solid var(--color-form-input-n25);
 }
 
 .button.danger {

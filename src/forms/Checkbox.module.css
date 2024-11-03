@@ -23,6 +23,10 @@
   border-color: var(--color-form-input-n37);
 }
 
+.checkbox:active {
+  background-color: var(--color-form-input-p25);
+}
+
 .checkmark {
   transition: opacity 0.25s;
   opacity: 0;

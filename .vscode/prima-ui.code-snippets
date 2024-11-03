@@ -1,0 +1,33 @@
+{
+  "Storybook": {
+    "scope": "typescriptreact",
+    "prefix": "storybook",
+    "description": "Generates Component Story Format (CSF) code.",
+    "body": [
+      "import type { Meta, StoryObj } from '@storybook/react';",
+      "import ${1:filename} from './${1:filename}';",
+      "",
+      "const meta: Meta<typeof ${1:filename}> = {",
+      "  component: ${1:filename},",
+      "  tags: [\"autodocs\"],"
+      "}",
+      "",
+      "export default meta;",
+      "",
+      "type Story = StoryObj<typeof ${1:filename}>;",
+      "// Add stories here: (See https://storybook.js.org/docs/writing-stories/typescript for help.)",
+      ""
+    ]
+  },
+  "Story": {
+    "scope": "typescriptreact",
+    "prefix": "story",
+    "description": "Generates a single story's code.",
+    "body": [
+      "export const ${1:StoryName}: Story = {",
+      "  render: (args) => <></>,",
+      "  args: {},",
+      "};"
+    ]
+  }
+}

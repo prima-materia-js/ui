@@ -1,0 +1,30 @@
+.step {
+  border-bottom: 1px solid var(--color-gray-light-n12);
+  margin-bottom: 1rem;
+  opacity: 0.35;
+  padding-bottom: 1rem;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.step.active_step {
+  opacity: 1;
+}
+
+.step:last-child {
+  border-bottom: none;
+}
+
+.step_title {
+  color: var(--color-text-p25);
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.step_subtitle {
+  color: var(--color-text-p50);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  margin-top: -0.35rem;
+}

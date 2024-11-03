@@ -23,12 +23,15 @@
 }
 
 .container {
+  animation-duration: 0.75s;
+  animation-name: noticecard_show;
   background-color: var(--color-card);
   border: 1px solid var(--accent-color);
   border-radius: 4px;
   box-shadow: 0px 0px 4px 0px var(--color-box-shadow-light);
   display: flex;
   margin: 0.5rem 0 1.5rem 0;
+  overflow: hidden;
   padding: 1rem;
 }
 
@@ -38,6 +41,8 @@
 }
 
 .content {
+  animation-duration: 0.75s;
+  animation-name: noticecard_content;
   flex: 1;
   margin-left: 1rem;
 }
@@ -56,4 +61,32 @@
   justify-content: flex-end;
   margin: 1rem -1rem -1rem -3.3rem;
   padding: 1rem;
+}
+
+@keyframes noticecard_show {
+  0% {
+    background-color: var(--accent-color);
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  5% {
+    background-color: var(--accent-color);
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    background-color: var(--color-card);
+  }
+}
+
+@keyframes noticecard_content {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

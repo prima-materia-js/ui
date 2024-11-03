@@ -1,6 +1,40 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import NoticeCard from './NoticeCard';
 import { GiCrown } from 'react-icons/gi';
+import Button from '../forms/Button';
+import { useState } from 'react';
+
+function generateGibberish(
+  sentences: number,
+  wordsPerSentence: number
+): string {
+  // Helper function to generate a random word
+  function generateRandomWord(length: number): string {
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    let word = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * letters.length);
+      word += letters[randomIndex];
+    }
+    return word;
+  }
+
+  // Generate the gibberish text
+  let paragraph = '';
+  for (let i = 0; i < sentences; i++) {
+    let sentence = '';
+    for (let j = 0; j < wordsPerSentence; j++) {
+      const wordLength = Math.floor(Math.random() * 5) + 3; // Random word length between 3 and 7
+      const word = generateRandomWord(wordLength);
+      sentence +=
+        (j === 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word) + ' ';
+    }
+    sentence = sentence.trim() + '. '; // Trim and add period at the end
+    paragraph += sentence;
+  }
+
+  return paragraph.trim(); // Trim the final paragraph
+}
 
 const meta: Meta<typeof NoticeCard> = {
   component: NoticeCard,
@@ -91,6 +125,59 @@ export const CardWithCustomIcon: Story = {
       </div>
     </NoticeCard>
   ),
+  args: {
+    title: "You're not my king.",
+  },
+};
+
+export const MultipleNoticeCards: Story = {
+  render: (args) => {
+    const [cards, setCards] = useState<
+      Array<{
+        key: string;
+        type: 'info' | 'warning' | 'success' | 'error';
+        title: string;
+        content: string;
+      }>
+    >([]);
+
+    return (
+      <div>
+        <div>
+          <Button
+            label="Add NoticeCard"
+            onClick={() => {
+              setCards((curr) => [
+                {
+                  key: crypto.randomUUID(),
+                  type: (
+                    ['info', 'warning', 'success', 'error'] as Array<
+                      'info' | 'warning' | 'success' | 'error'
+                    >
+                  )[Math.floor(Math.random() * 4)],
+                  title: generateGibberish(1, 8),
+                  content: generateGibberish(5, 10),
+                },
+                ...curr,
+              ]);
+            }}
+          />
+          <Button
+            label="Clear all cards"
+            onClick={() => {
+              setCards([]);
+            }}
+          />
+        </div>
+
+        {cards.map((card) => (
+          <NoticeCard key={card.key} title={card.title} type={card.type}>
+            <div>{card.content}</div>
+          </NoticeCard>
+        ))}
+      </div>
+    );
+  },
   args: {
     title: "You're not my king.",
   },

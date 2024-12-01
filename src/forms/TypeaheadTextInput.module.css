@@ -58,7 +58,8 @@
   padding: 0.25rem;
 }
 
-.options li:hover {
+.options li:hover,
+.options li.highlighted_suggestion {
   background: var(--color-form-input-n12);
 }
 

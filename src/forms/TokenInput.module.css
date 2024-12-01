@@ -1,0 +1,85 @@
+.main_container {
+  flex: 1;
+  position: relative;
+}
+
+.container {
+  background-color: var(--color-form-input-p75);
+  border: 1px solid var(--color-form-input-n25);
+  border-radius: 4px;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  overflow: hidden;
+  padding: 0.5rem;
+  row-gap: 0.25rem;
+}
+
+.disabled {
+  background-color: var(--color-form-input-n12);
+  color: var(--color-form-input-n37);
+  cursor: not-allowed;
+}
+
+.token {
+  background: var(--color-form-input-p12);
+  border: 1px solid var(--color-form-input-n12);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-right: 0.25rem;
+  padding: 0 0.25rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.text_input {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border-radius: 4px;
+  color: var(--color-form-input-n87);
+  flex: 1;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  outline: 0;
+  padding: 0.25rem;
+}
+
+.delete_token_button {
+  color: var(--color-form-input-n25);
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 0.35rem;
+  position: relative;
+  top: 0.15rem;
+  transition: color 0.15s ease-in-out;
+}
+
+.delete_token_button:hover {
+  color: var(--color-form-input-n62);
+}
+
+.options {
+  background-color: var(--color-form-input-p75);
+  border: 1px solid var(--color-form-input-n25);
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 13px 15px -8px var(--color-box-shadow);
+  list-style-type: none;
+  position: absolute;
+  width: 100%;
+  width: -webkit-fill-available;
+  z-index: 999;
+}
+
+.options li {
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.options li:hover,
+.options li.highlighted_suggestion {
+  background: var(--color-form-input-n12);
+}
+
+.options li:hover:last-child {
+  border-radius: 0 0 4px 4px;
+}

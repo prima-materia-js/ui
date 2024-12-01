@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import classnames from 'classnames';
 import FormField from './FormField';
 
@@ -69,13 +69,14 @@ const TypeaheadTextInput: React.FC<{
     }
   }, [textInput, props.value, props.focusOnLoad]);
 
-  const filteredOptions = useMemo(
-    () =>
-      options
-        .filter((opt) => opt.toLowerCase().includes(value.toLowerCase()))
-        .sort(),
-    [value, options]
-  );
+  const [highlightedSuggestionIndex, setHighlightedSuggestionIndex] =
+    useState(-1);
+  const filteredOptions = useMemo(() => {
+    setHighlightedSuggestionIndex(-1);
+    return options
+      .filter((opt) => opt.toLowerCase().includes(value.toLowerCase()))
+      .sort();
+  }, [value, options]);
   const shouldShowOptions =
     value.length >= typeaheadTriggerChars &&
     !options.includes(value) &&
@@ -113,6 +114,31 @@ const TypeaheadTextInput: React.FC<{
               props.onChange(e.currentTarget.value);
             }}
             onFocus={props.onFocus}
+            onKeyUp={(e) => {
+              if (e.key === 'ArrowDown') {
+                if (
+                  highlightedSuggestionIndex <
+                  Math.min(maxTypeaheadOptions, filteredOptions.length) - 1
+                ) {
+                  setHighlightedSuggestionIndex(highlightedSuggestionIndex + 1);
+                  e.preventDefault();
+                }
+              } else if (e.key === 'ArrowUp') {
+                if (highlightedSuggestionIndex > 0) {
+                  setHighlightedSuggestionIndex(highlightedSuggestionIndex - 1);
+                  e.preventDefault();
+                }
+              } else if (
+                (e.key === 'Enter' || e.key === 'Tab') &&
+                highlightedSuggestionIndex != -1
+              ) {
+                props.onChange(filteredOptions[highlightedSuggestionIndex]);
+                props.onSelectItem &&
+                  props.onSelectItem(
+                    filteredOptions[highlightedSuggestionIndex]
+                  );
+              }
+            }}
             placeholder={placeholder}
             ref={(input) => {
               textInput = input;
@@ -122,17 +148,26 @@ const TypeaheadTextInput: React.FC<{
         </div>
         {shouldShowOptions && (
           <ul className={styles.options}>
-            {filteredOptions.slice(0, maxTypeaheadOptions).map((option) => (
-              <li
-                key={option}
-                onClick={() => {
-                  props.onChange(option);
-                  props.onSelectItem && props.onSelectItem(option);
-                }}
-              >
-                {option}
-              </li>
-            ))}
+            {filteredOptions
+              .slice(0, maxTypeaheadOptions)
+              .map((option, index) => (
+                <li
+                  key={option}
+                  className={classnames({
+                    [styles.highlighted_suggestion]:
+                      index === highlightedSuggestionIndex,
+                  })}
+                  onClick={() => {
+                    props.onChange(option);
+                    props.onSelectItem && props.onSelectItem(option);
+                  }}
+                  onMouseEnter={() => {
+                    setHighlightedSuggestionIndex(-1);
+                  }}
+                >
+                  {option}
+                </li>
+              ))}
             {filteredOptions.length > maxTypeaheadOptions && (
               <li className={styles.more_options}>
                 ... and {filteredOptions.length - maxTypeaheadOptions} more

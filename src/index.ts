@@ -33,6 +33,7 @@ import TextArea from './forms/TextArea';
 import TypeaheadTextInput from './forms/TypeaheadTextInput';
 import { FormValidationProvider } from './forms/FormValidationProvider';
 import FormValidationSummary from './forms/FormValidationSummary';
+import TokenInput from './forms/TokenInput';
 
 // Images
 import Image from './images/Image';
@@ -109,4 +110,5 @@ export {
   PageWithLeftSidebar,
   ThemeConfiguration,
   ThemeToggle,
+  TokenInput,
 };

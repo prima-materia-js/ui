@@ -56,7 +56,7 @@ const TokenInput: React.FC<{
   onChange,
   focusOnLoad,
   placeholder,
-  suggestions = [],
+  suggestions,
   maxSuggestions = 10,
   typeaheadTriggerChars = 1,
   forbidDuplicates = true,
@@ -72,11 +72,11 @@ const TokenInput: React.FC<{
     (token: string) => {
       if (token.trim() === '') return;
 
-      if (suggestions.length > 0) {
+      if (suggestions != null && suggestions.length > 0) {
         token = suggestions.find((t) => t.toLowerCase() === token) ?? token;
       }
 
-      if (restrictToSuggestions && !suggestions.includes(token)) return;
+      if (restrictToSuggestions && !(suggestions ?? []).includes(token)) return;
 
       if (forbidDuplicates) {
         const isExistingToken = forbidCaseInsensitiveDuplicates
@@ -106,6 +106,8 @@ const TokenInput: React.FC<{
 
   const filteredOptions = useMemo(() => {
     setHighlightedSuggestionIndex(-1);
+    if (suggestions == null) return [];
+
     return suggestions
       .filter(
         (opt) =>
@@ -116,6 +118,7 @@ const TokenInput: React.FC<{
   }, [newToken, suggestions, value]);
   const shouldShowOptions =
     newToken.length >= typeaheadTriggerChars &&
+    suggestions != null &&
     !suggestions.includes(newToken) &&
     filteredOptions.length > 0;
 

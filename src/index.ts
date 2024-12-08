@@ -6,6 +6,7 @@ import NoticeCard from './containers/NoticeCard';
 import { TabContainer, Tab } from './containers/TabContainer';
 import { Timeline, TimelineEntry } from './containers/Timeline';
 import Sidebar from './containers/Sidebar';
+import { LabelledList, LabelledListSection } from './containers/LabelledList';
 
 // Spinners
 import Spinner from './spinners/Spinner';

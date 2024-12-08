@@ -112,4 +112,6 @@ export {
   ThemeConfiguration,
   ThemeToggle,
   TokenInput,
+  LabelledList,
+  LabelledListSection,
 };

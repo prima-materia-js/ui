@@ -12,7 +12,7 @@ import styles from './Card.module.css';
 const CollapsibleCard: React.FC<
   PropsWithChildren<{
     /** The title to be shown on the card. Will be visible when the card is collapsed. */
-    title: string;
+    title: React.ReactNode;
   }>
 > = ({ title, children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -31,7 +31,7 @@ const CollapsibleCard: React.FC<
       style={{}}
     >
       <h2 className={styles.title} onClick={onClickTitle}>
-        <div>{title}</div>
+        <div className={styles.title_content}>{title}</div>
         <div className={styles.icon_container}>
           <FaCaretRight className={styles.icon} />
         </div>

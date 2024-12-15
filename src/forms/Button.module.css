@@ -91,3 +91,13 @@ button.subtle:hover {
     width: 100%;
   }
 }
+
+.button_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.button_label svg {
+  margin-right: 0.25rem;
+}

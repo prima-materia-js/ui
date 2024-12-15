@@ -19,6 +19,9 @@ type NavLinkProps = {
 
   /** Whether the active link indicator should be shown to the right or bottom of the label. */
   highlightDirection?: 'right' | 'bottom';
+
+  /** Whether the navlink should be highlighted for exact matches only, and not for child pages. Defaults to false. */
+  exact?: boolean;
 };
 
 /**
@@ -30,6 +33,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   label,
   href,
   highlightDirection = 'right',
+  exact = false,
 }) => {
   return (
     <RNavLink
@@ -42,7 +46,7 @@ const NavLink: React.FC<NavLinkProps> = ({
           [styles.highlight_bottom]: highlightDirection === 'bottom',
         })
       }
-      end
+      end={exact}
     >
       {icon && <div className={styles.icon}>{icon}</div>}
 

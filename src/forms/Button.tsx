@@ -89,7 +89,7 @@ const Button: React.FC<Props> = ({
       aria-label={tooltip}
       data-balloon-pos={tooltipDirection}
     >
-      {label}
+      <div className={styles.button_label}>{label}</div>
       {showSpinner && (
         <span
           style={{

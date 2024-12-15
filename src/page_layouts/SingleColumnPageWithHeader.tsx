@@ -14,6 +14,7 @@ type Props = {
   navLinks?: Array<{
     title: string;
     href: string;
+    highlightOnExactMatchOnly?: boolean;
   }>;
   rightContent?: React.ReactNode;
 };
@@ -55,6 +56,7 @@ const SingleColumnPageWithHeader: React.FC<Props> = ({
                 label={link.title}
                 href={link.href}
                 highlightDirection="bottom"
+                exact={link.highlightOnExactMatchOnly}
               />
             ))}
           </div>

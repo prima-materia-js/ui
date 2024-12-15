@@ -49,6 +49,8 @@
 
 .collapsible_card .icon_container {
   margin-left: auto;
+  display: flex;
+  align-self: center;
 }
 
 .collapsible_card .icon {
@@ -76,4 +78,14 @@
   .footer {
     margin-top: 2rem;
   }
+}
+
+.collapsible_card .title_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.collapsible_card .title_content svg {
+  margin-right: 0.25rem;
 }

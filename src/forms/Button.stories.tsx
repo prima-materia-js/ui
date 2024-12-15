@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from './Button';
 import { useState } from 'react';
+import { FaSave, FaThumbsUp } from 'react-icons/fa';
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -131,5 +132,31 @@ export const ButtonWithSpinner: Story = {
   },
   args: {
     label: 'Click me',
+  },
+};
+
+export const ButtonWithIcon: Story = {
+  render: (args) => {
+    const [showSpinner, setShowSpinner] = useState(false);
+    return (
+      <Button
+        {...args}
+        label={
+          <>
+            <FaSave /> {args.label}
+          </>
+        }
+        showSpinner={showSpinner}
+        onClick={() => {
+          setShowSpinner(true);
+          setTimeout(() => {
+            setShowSpinner(false);
+          }, 3000);
+        }}
+      />
+    );
+  },
+  args: {
+    label: 'Save',
   },
 };

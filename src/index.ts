@@ -7,6 +7,8 @@ import { TabContainer, Tab } from './containers/TabContainer';
 import { Timeline, TimelineEntry } from './containers/Timeline';
 import Sidebar from './containers/Sidebar';
 import { LabelledList, LabelledListSection } from './containers/LabelledList';
+import { GuidedFlow, GuidedFlowStep } from './containers/GuidedFlow';
+import { TabRouter, NavTab } from './containers/TabRouter';
 
 // Spinners
 import Spinner from './spinners/Spinner';
@@ -114,4 +116,8 @@ export {
   TokenInput,
   LabelledList,
   LabelledListSection,
+  GuidedFlow,
+  GuidedFlowStep,
+  TabRouter,
+  NavTab,
 };

@@ -12,8 +12,11 @@ import {
 } from 'react-router-dom';
 
 type NavTabProps = {
-  /** A unique URL for this tab. */
-  url: string;
+  /** Where clicking on the tab should link to */
+  linkTo: string;
+
+  /** The route handled by this tab */
+  route: string;
 
   /** The title of this tab, to be shown on the tab selector. */
   title: string;
@@ -42,10 +45,9 @@ function TabRouter({ children }: TabbedRouterProps): JSX.Element | null {
   useEffect(() => {
     if (
       children.length > 0 &&
-      children.every((tab) => !matchPath(location.pathname, tab.props.url))
+      children.every((tab) => !matchPath(location.pathname, tab.props.linkTo))
     ) {
-      console.log('nav');
-      navigate(children[0].props.url);
+      navigate(children[0].props.linkTo);
     }
   }, [location, children, navigate]);
 
@@ -61,12 +63,12 @@ function TabRouter({ children }: TabbedRouterProps): JSX.Element | null {
             className={classnames({
               [styles.selected_tab]: matchPath(
                 location.pathname,
-                tab.props.url
+                tab.props.linkTo
               ),
             })}
-            key={`tab_selector_${tab.props.url}`}
+            key={`tab_selector_${tab.props.linkTo}`}
             onClick={() => {
-              navigate(tab.props.url);
+              navigate(tab.props.linkTo);
             }}
           >
             {tab.props.title}
@@ -76,8 +78,8 @@ function TabRouter({ children }: TabbedRouterProps): JSX.Element | null {
       <Routes>
         {children.map((tab) => (
           <Route
-            key={`tab_${tab.props.url}`}
-            path={tab.props.url}
+            key={`tab_${tab.props.linkTo}`}
+            path={tab.props.route}
             element={<>{tab.props.children}</>}
           />
         ))}

@@ -17,6 +17,10 @@ type Props = {
     highlightOnExactMatchOnly?: boolean;
   }>;
   rightContent?: React.ReactNode;
+  homeLink?: {
+    title: string;
+    href: string;
+  };
 };
 
 const SingleColumnPageWithHeader: React.FC<Props> = ({
@@ -25,6 +29,7 @@ const SingleColumnPageWithHeader: React.FC<Props> = ({
   logo,
   navLinks,
   rightContent,
+  homeLink,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -45,7 +50,21 @@ const SingleColumnPageWithHeader: React.FC<Props> = ({
           >
             <FaBars />
           </div>
-          {logo && <div className={styles.logo}>{logo}</div>}
+          {logo && (
+            <div className={styles.logo}>
+              {homeLink != null ? (
+                <a
+                  href={homeLink.href}
+                  title={homeLink.title}
+                  className={styles.home_link}
+                >
+                  {logo}
+                </a>
+              ) : (
+                logo
+              )}
+            </div>
+          )}
         </div>
 
         {navLinks && (

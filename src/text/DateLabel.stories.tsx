@@ -17,6 +17,30 @@ export const Example: Story = {
   },
   render: (args) => {
     const { date } = args;
-    return <DateLabel {...args} date={(date as number) / 1000} />;
+    return <DateLabel {...args} date={date} />;
+  },
+};
+
+export const ExampleWithUnixTimestamp: Story = {
+  args: {
+    date: new Date(),
+    format: 'E d LLL Y',
+  },
+  render: (args) => {
+    const { date } = args;
+    return (
+      <DateLabel {...args} date={Math.ceil((date as Date).getTime() / 1000)} />
+    );
+  },
+};
+
+export const ExampleWithISOString: Story = {
+  args: {
+    date: new Date(),
+    format: 'E d LLL Y',
+  },
+  render: (args) => {
+    const { date } = args;
+    return <DateLabel {...args} date={(date as Date).toISOString()} />;
   },
 };

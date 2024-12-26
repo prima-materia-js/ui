@@ -30,3 +30,25 @@ export const Example: Story = {
     </BrowserFrame>
   ),
 };
+
+export const ExampleWithHomeLink: Story = {
+  render: (args) => (
+    <BrowserFrame>
+      <SingleColumnPageWithHeader
+        logo={<>🐱 My app</>}
+        navLinks={[
+          { title: 'Home', href: '/' },
+          { title: 'About', href: '/about' },
+          { title: 'Contact', href: '/contact' },
+        ]}
+        rightContent={<Button label="Sign out" onClick={() => {}} />}
+        homeLink={{
+          title: 'Home',
+          href: '/',
+        }}
+      >
+        <ExampleContent>Content</ExampleContent>
+      </SingleColumnPageWithHeader>
+    </BrowserFrame>
+  ),
+};

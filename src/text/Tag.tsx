@@ -13,7 +13,7 @@ const Tag: React.FC<
   }>
 > = ({ children, color: colour = 'normal' }) => {
   return (
-    <div
+    <span
       className={classnames({
         [styles.tag]: true,
         [styles.colour_normal]: colour === 'normal',
@@ -24,7 +24,7 @@ const Tag: React.FC<
       })}
     >
       {children}
-    </div>
+    </span>
   );
 };
 

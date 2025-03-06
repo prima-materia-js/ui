@@ -6,6 +6,7 @@ import { useCallback, useState } from 'react';
 import { FaCaretRight } from 'react-icons/fa';
 
 import styles from './NavLink.module.css';
+import { SidebarStateContext } from '../page_layouts/PageWithLeftSidebar';
 
 type NavLinkProps = {
   /** The icon to be shown to the left of the link's label. */
@@ -35,6 +36,9 @@ const NavLink: React.FC<NavLinkProps> = ({
   highlightDirection = 'right',
   exact = false,
 }) => {
+  const { collapsed: isSidebarCollapsed } =
+    React.useContext(SidebarStateContext);
+
   return (
     <RNavLink
       to={href}
@@ -44,13 +48,22 @@ const NavLink: React.FC<NavLinkProps> = ({
           [styles.active]: isActive,
           [styles.highlight_right]: highlightDirection === 'right',
           [styles.highlight_bottom]: highlightDirection === 'bottom',
+          [styles.collapsed]: isSidebarCollapsed,
         })
       }
       end={exact}
     >
-      {icon && <div className={styles.icon}>{icon}</div>}
+      {icon && (
+        <div
+          className={classnames({
+            [styles.icon]: true,
+          })}
+        >
+          {icon}
+        </div>
+      )}
 
-      <div>{label}</div>
+      <div className={styles.label}>{label}</div>
     </RNavLink>
   );
 };

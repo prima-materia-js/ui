@@ -6,10 +6,11 @@ import Heading from '../text/Heading';
 import { FaBars } from 'react-icons/fa';
 
 import styles from './Sidebar.module.css';
+import { SidebarStateContext } from '../page_layouts/PageWithLeftSidebar';
 
 export type Props = {
   /** The name of this app, to be shown at the top of the sidebar. */
-  appName: string;
+  appName: React.ReactNode;
 
   /** An icon or logo for this app. Will be shown next to the app name. */
   icon?: React.ReactNode;
@@ -43,9 +44,15 @@ const Sidebar: React.FC<React.PropsWithChildren<Props>> = ({
   const onNavToggle = useCallback(() => {
     setIsNavVisible(!isNavVisible);
   }, [isNavVisible, setIsNavVisible]);
+  const { collapsed } = React.useContext(SidebarStateContext);
 
   return (
-    <div className={styles.container}>
+    <div
+      className={classnames({
+        [styles.container]: true,
+        [styles.collapsed]: collapsed,
+      })}
+    >
       <div className={styles.nav_toggle} onClick={onNavToggle}>
         <FaBars />
       </div>
@@ -59,11 +66,13 @@ const Sidebar: React.FC<React.PropsWithChildren<Props>> = ({
         <Link to={homeHref} className={styles.home_link}>
           <div className={styles.app_header}>
             {icon && <div className={styles.icon}>{icon}</div>}
-            {showAppName && (
-              <Heading type="section-title" subtitle={version}>
-                {appName}
-              </Heading>
-            )}
+            <span className={styles.app_name}>
+              {showAppName && (
+                <Heading type="section-title" subtitle={version}>
+                  {appName}
+                </Heading>
+              )}
+            </span>
           </div>
         </Link>
         {children}

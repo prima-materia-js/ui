@@ -37,6 +37,23 @@
   height: 1rem;
   margin-right: 0.5rem;
   width: 1rem;
+  transition: height 0.25s ease-in-out;
+}
+
+.label {
+  overflow: hidden;
+  width: 20rem;
+  transition: width 0.25s ease-in-out;
+}
+
+@media (min-width: 1000px) {
+  .collapsed .icon {
+    height: 1.25rem;
+  }
+
+  .collapsed .label {
+    width: 0;
+  }
 }
 
 .link_section {
